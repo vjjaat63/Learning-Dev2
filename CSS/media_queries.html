@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Queries </title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            background-color: #212121;
+        }
+        .container{
+            width: 100vw;
+            height: 80vh;
+            background-image: url("../resources/vegito.avif");
+            background-size: cover;
+        }
+        
+        @media screen and (max-width : 700px) {
+            .container{
+                width: 100vw;
+                height: 120vh;
+                background-image: url("../resources/mui&ue.jpg");
+                background-size: cover ;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+    </div>
+</body>
+</html>
