@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transition</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            background-color: #212121;
+        }
+        #btn{
+            color: white;
+        }
+        img{
+            /*
+            width: 300px;
+            transform: scale(0.5);
+            */
+            width: 300px;
+            transition: width 2s ease-in;
+        }
+    </style>
+</head>
+<body>
+    <img src="../resources/ssj3.png" alt="" id="img">
+    <button id="btn">click to converge</button>
+</body>
+<script>
+    btn.addEventListener("click",()=>{
+    if(img.style.width === "300px"){
+
+        img.style.width = "200px";
+        btn.textContent = "Diverge";   
+    }
+    else{
+
+        img.style.width = "300px";
+        btn.textContent = "Converge";   
+    }
+    })
+    
+</script>
+</html>
