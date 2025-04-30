@@ -16,7 +16,7 @@
         form {
             margin: 10px 200px auto 200px;
             background: none;
-            background-color: transparent;
+            background-color: inherit;
         }
 
         hr {
@@ -37,7 +37,8 @@
         label {
             display: inline-block;
             width: 200px;
-            background-color: transparent;
+            background-color: white
+            
 
         }
 
@@ -74,30 +75,41 @@
             display: inline;
             margin: 1px 3px 1px 0px;
         }
+        form ::placeholder{
+            color: gray
+        }
+        .select{
+            color: white;
+            background-color:#000000;
+        }
     </style>
 </head>
 
 <body>
     <h1>Registration Form</h1>
     <hr>
-    <form action="">
+    <form>
 
         <div>
             <label for="name">Name : </label>
             <input type="text" id="name" placeholder="Enter Username">
         </div>
+
         <div>
             <label for="email">Email : </label>
             <input type="email" id="email" placeholder="Enter email">
         </div>
+
         <div>
             <label for="phone">Phone No. : </label>
             <input type="tel" id="phone" placeholder="Enter phone number">
         </div>
+
         <div>
             <label for="dob">Date of Birth : </label>
             <input type="date" id="dob">
         </div>
+
         <div>
             <label for="gender">Gender : </label>
 
@@ -106,17 +118,18 @@
             <input type="radio" name="sex" id="female">
             <label for="female" id="f">Female</label>
         </div>
-        <div>
 
+        <div>
             <label for="pass">Checklist your Qualifications : </label>
             <input type="checkbox" name="pass" class="pass" id="10">10<sup>th</sup>
             <input type="checkbox" name="pass" class="pass" id="12">12<sup>th</sup>
             <input type="checkbox" name="pass" class="pass" id="15">Bachelors
             <input type="checkbox" name="pass" class="pass" id="18">Masters
         </div>
+
         <div>
             <label for="Course">Choose your course : </label>
-            <select required>
+            <select class="select">
                 <option value="" disabled selected>---- Choose your Course ----</option>
                 <option value="bsc">BSc</option>
                 <option value="btech">BTech</option>

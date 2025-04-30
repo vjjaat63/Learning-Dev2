@@ -10,20 +10,23 @@
             padding: 0;
         }
         @keyframes bar {
-            0%{
+            0% {
                 width: 0vw;
             }
-            70%{
+            70% {
                 width: 60vw;
             }
-            100%{
+            100% {
                 width: 100vw;
-            } 
+                z-index: 0;
+            }
         }
         .prog{
+            position: relative;
+            z-index: 10;
+            height: 1px;
             background-color: red;
-            height: 1.2px;
-            animation: bar 2s ease-in-out ;
+            animation: bar 2s ease-in-out forwards ;
         }
         nav ul a{
             list-style: none;
@@ -42,8 +45,8 @@
             margin: 20px;
         }
         nav{
-            position: sticky;
-            z-index: 10;;
+            position: fixed;
+            z-index: 9;
             top: 0;
             width: 100vw;
             height: 40px;
@@ -71,6 +74,10 @@
             box-sizing: border-box;
             border-radius: 10px;
             padding: 5px;
+            margin: 5px;
+
+            box-shadow: 5px 4px 10px black ;
+            filter: drop-shadow(5px 4px 10px grey);
         }
         .sticker img{
             border-radius: 5px;
@@ -86,7 +93,7 @@
 </head>
 <body>
     <header>
-        <div class="prog"></div>
+        <div class=".prog"></div>
         <nav>
             <img src="../resources/goku.jpg" class = "logo" alt="">
             <ul class="links">
