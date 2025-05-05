@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events</title>
+</head>
+<body>
+    <button class="click">click to change background color</button>
+    <button class="stop"> stop functioning of first button</button>
+    <script>
+        function changebg(target){
+            if(target.style.backgroundColor === 'white')
+                target.setAttribute('style', 'background-color : #212121;')
+            else
+                target.setAttribute('style', 'background-color : white;')
+        }
+
+        let button = document.querySelector(".click");
+        let button2 = document.querySelector(".stop");
+        let target = document.body;
+
+        function clicking(){
+            changebg(target)
+        }
+        button.addEventListener('click',clicking)
+        button2.addEventListener('click',()=>{
+            button.removeEventListener('click', clicking)
+        })
+
+    </script>
+</body>
+</html>

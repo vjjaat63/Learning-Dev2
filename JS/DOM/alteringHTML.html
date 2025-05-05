@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Learning</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            background-color: #212121;
+            color: white;
+            
+        }
+        .p3{
+            display: inline-bock;
+            visibility: hidden;
+            /*
+            */
+            img{
+                filter: drop-shadow(2px 2px 5px white);
+                margin: 15px;
+                height: 300px;
+                border-radius: 10px;
+            
+                &:hover{
+                transform: scale(1.08);
+                transition : transform 1s ease-in-out;
+                }
+            }
+        }
+        .show{
+            display: block;
+            border: 2px solid white;
+            box-shadow: 2px 2px 5px white;
+            padding: 3px;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 140px;
+
+        }
+    </style>
+</head>
+<body>
+    <div class="d1">
+        This is div 1
+    </div>
+
+    <p class="p1">
+        this is para 1
+    </p>
+
+    <div class="d2">
+        This is div 2
+
+        <p class="p2">
+            this is p2 inside d2
+        </p>
+        <button class="show">
+            Click to show image
+        </button>
+        
+        <p class="p3 hidden">
+            <img src="../../resources/mui&ue.jpg" alt="">
+        </p>
+        
+    </div>        
+    </summary>
+    <script>
+        let button = document.querySelector(".show")
+        let hidden = document.querySelector(".hidden")
+
+        button.addEventListener("click",()=> {
+            if(hidden.style.visibility === "visible"){
+                button.textContent = "click to show image"
+                hidden.style.visibility = "hidden"
+            }
+            else{
+                hidden.style.visibility = "visible"
+                button.textContent = "click to hide image"
+            }
+        })
+    </script>
+</body>
+</html>

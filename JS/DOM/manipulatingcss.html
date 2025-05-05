@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            color: white;
+            background-color: #212121;
+        }
+        .stickers{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap : 5px;
+            flex-wrap: wrap;
+        }
+        .sticker{
+            display: inline-block;
+            background-color: white;
+            height: 300px;
+            width: 200px;
+            border-radius: 10px;
+        }
+        .photo{
+            border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            background-color: white;
+        }
+        .photo img{
+            height: 200px;
+            width: 190px;
+            object-fit: cover;
+            margin: 5px;
+            border-radius: 10px;
+            filter: drop-shadow(2px 1px 4px black);
+            
+        }
+        h3{
+            text-align: center;
+            text-shadow: 1px 1px 3px gray;
+        }
+        .info{
+            text-align: center;
+            color: gray;
+            background-color: transparent;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="stickers">
+        
+        <div class="sticker">
+            <div class="photo">
+                <img src="../../resources/vegeta.jpg">
+            </div>
+            <h3> Vegeta </h3>
+            <span class="info">
+                I have to write something here but i don't want to write
+            </span>
+        </div>
+        <div class="sticker">
+            <div class="photo">
+                <img src="../../resources/goku.jpg">
+            </div>
+            <h3> Goku </h3>
+            <span class="info">
+                I  have to write something here but i don't want to write
+            </span>
+        </div>
+    
+    </div>
+    <script>
+        let infos = document.querySelectorAll(".info")
+        infos.forEach((info) => {
+            info.innerText = "As I said earlier, I don't want to write anything here";
+            info.style.cssText = "font-family: 'Dancing Script', cursive ";
+        });
+
+
+
+    </script>
+</body>
+</html>

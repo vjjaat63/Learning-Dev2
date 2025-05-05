@@ -11,9 +11,9 @@
         overflow: hidden;
     }
     .beam{
-        height: 20px;
-        width: 10px;
-        animation: beam 3s ease-in-out 0.2s infinite alternate ;
+        height: 0px;
+        width: 0px;
+        /*animation: beam 3s ease-in-out 0.2s infinite alternate ;*/
     }
     .container{
         height: 100vh;
@@ -58,7 +58,7 @@
             z-index: 0;
         }
         100%{
-            height: 80vh;
+            height: 50vh;
             width: 50vw;  
             background-color: violet;            
         }
@@ -80,6 +80,23 @@
         right: 0%;
         animation: vegeta 3s ease-in-out 0.2s infinite alternate;
     }
+    #fire {
+        position: absolute;
+        bottom: 5px;
+        border-radius: 10px;
+        border: none;
+        right: 49%;
+        background-color: red;
+        color: white;
+
+        &:hover {
+            border: none;
+            transform: scale(1.5);
+            transition: transform 1s ease-in;
+            box-shadow: 3px 3px 4px purple;
+        }
+    }
+
     </style>
 </head>
 <body>
@@ -90,5 +107,17 @@
         <div class="galick beam" ></div>
     </div>
     <img src="../resources/galick gun.webp" class="vegeta">
-    </body>
+    
+    <button id="fire">Fire</button>
+<script>
+    let beams = document.querySelectorAll(".beam");
+    let fire = document.querySelector("#fire");
+    fire.addEventListener("click",()=>{
+        beams.forEach(beam => {
+           beam.style.animation = "beam 3s ease-in-out 0.2s infinite alternate";
+        });
+    });
+
+</script>
+</body>
 </html>
