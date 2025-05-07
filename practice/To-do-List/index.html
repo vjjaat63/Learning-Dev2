@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To Do List
+    </title>
+    <link rel="icon" href="../../resources/">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+
+        <div class="top">
+            <input type="text" placeholder="Enter task " id="task">
+            <button id="addTask" >Add Task</button>
+            <button id="cleardone">Clear Done Tasks</button>
+            <button id="clearpending">Clear Pending Tasks</button>
+
+        </div>
+        
+        <div class="mid">
+
+            
+            <div class="todo">
+                <h3 id="pend">Tasks Pending</h3>
+                <ul id="todolist">
+                    <li>test1</li>
+                    <li>test2</li>
+                    <li>test3</li>
+                </ul>
+            </div>
+            
+            <div class="done ">
+                <h3 id="done">Tasks Done</h3>
+                <ul id="donelist">
+                    
+                </ul>
+            </div>
+        </div>
+            
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>

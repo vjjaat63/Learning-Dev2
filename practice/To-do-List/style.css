@@ -1,0 +1,126 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.container{
+    width: 60vw;
+}
+.mid{
+    display: flex;
+    justify-content: space-around;
+}
+body{
+    background-image: url("../../resources/ssj2-wall.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.top{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+input{
+    margin: 3px;
+    padding: 3px;
+    box-sizing: border-box;
+    height: 20px;
+    width: 60%;
+    background-color: transparent;
+    color: white;
+    border-radius: 5px;
+    &:hover{
+        border: 1px solid white;
+    }
+    &::placeholder{
+        color: rgb(171, 142, 142);
+    }
+}
+#todolist li{
+    cursor: pointer;
+}
+button{
+    margin: 3px;
+    height: 20px;
+    width: 60%;
+    cursor: pointer;
+    background-color: white;
+    border: none;
+    border-radius: 5px;
+    background-color: transparent;
+    
+    &:hover{
+        transform: scale(1.03);
+        transition: transform 0.6s ease-out;
+        text-shadow: 0.5px 0.5px 0.1px black;
+    }
+}
+#addTask{
+    background-color: rgb(83, 179, 83);
+    &:hover{
+        background-color: green;
+    }
+}
+#cleardone{
+    background-color: orange;
+    &:hover{
+        background-color: rgb(176, 87, 24);
+    }
+}
+#clearpending{
+    background-color: rgb(105, 138, 208);
+    &:hover{
+        background-color: blue;
+    }
+}
+#done{
+    color: red;
+    font-weight: 300;
+}
+
+#pend{
+    color: rgb(98, 171, 146);
+    font-weight: 300;
+}
+.list{
+    display: flex;
+    justify-content: flex-start;
+}
+div ul{
+    text-align: center;
+    list-style-type: none;
+    color: white;
+}
+h3{
+    margin: 5px;
+    padding: 2px;
+    display: inline-block;
+    position: relative;
+}
+h3::after{
+    content : "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    transform: translateX(-50%);
+    transition: width 0.3s ease-in-out;
+}
+#pend:hover::after{
+    background-color: rgb(98, 171, 146);
+    width: 100%;
+}
+#done:hover::after{
+    background-color: red;
+    width: 100%;
+}
+
+#todolist li:hover{
+    color: red;
+    transform: scale(1.2);
+}
+#donelist{
+    color: black;
+}
