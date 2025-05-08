@@ -1,0 +1,121 @@
+:root{
+    --prog:0%;
+}
+*{
+    margin: 0;
+    padding: 0;
+    background-color: #212121;
+}
+html{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container{
+  border-radius: 20px;
+  width: 100%;
+  max-width: 300px;
+  background-color: gray;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin:auto;
+}
+.search{
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  background-color: transparent;
+}
+.graph{
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+   background: conic-gradient(
+    green 0% calc(var(--prog)),
+    greenyellow calc(var(--prog)) 100%
+  )
+}
+p{
+  background-color: transparent;
+  font-weight: 1000;
+}
+.circle:hover{
+  transform: scale(1.03);
+  transition: transform 0.3s ease-out ;
+    box-shadow: 2px 2px 6px green;
+}
+button,input{
+  color: white;
+  padding: 3px;
+  border-radius: 5px;
+  border: 1px solid white;
+}
+input{
+  background-color: transparent;
+  &::placeholder{
+    color: black;
+    padding: 4px;
+    text-transform: capitalize;
+  }
+}
+button{
+  cursor: pointer;
+  padding: 4px;
+  &:hover{
+    font-weight: 2em;
+    box-shadow: 2px 2px 20px black;
+    transform: scale(1.02);
+    transition: transform 0.1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+}
+button:active{
+  transform: scale(1.02) translate(1px,1px);
+  transition: transform 0.05s ease-out ;
+  box-shadow: 0.5px 0.5px 1px white;
+}
+.difficulty{
+  background-color: transparent;
+  font-weight: 500;
+}
+#analytics{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  background-color: inherit;
+  gap: 10px;
+}
+.card{
+  background-color: aqua !important;
+  color: white;
+  border-radius: 6px;
+  border: 2px solid blue;
+  padding: 6px;
+  color: black;
+  width: 130px;
+}
+.card .diff, .card .sub {
+  background-color: transparent; /* prevents overriding by * selector */
+}
+.card:hover{
+  transform: scale(1.03);
+  transition: transform 0.3s ease-out ;
+  box-shadow: 2px 2px 6px black;
+}

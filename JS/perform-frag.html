@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Performance</title>
+</head>
+<body>
+    <script>
+
+        const p1 = performance.now();
+
+        for(let i = 0;i<100;i++){
+            let para = document.createElement('p')
+            para.innerText = `This is para ${i+1}`
+            document.body.insertAdjacentElement('beforeend',para)
+        }
+        const p2 = performance.now()
+
+        console.log("total time taken with 100 reflows and 100 repaints :  ",p2 - p1)
+
+        const p3 = performance.now();
+
+        const div = document.createElement('div')
+        for (let i = 0; i < 100; i++) {
+            let para = document.createElement('p')
+            para.innerText = `In div this is para ${i + 1}`
+            div.insertAdjacentElement('beforeend', para)
+        }
+
+        document.body.insertAdjacentElement('beforeend',div)
+
+        const p4 = performance.now()
+        
+        console.log("total time taken with 1 reflow and 1 repaint : " , p4 - p3)
+
+        const p5 = performance.now()
+
+        const frag = document.createDocumentFragment()
+
+        for (let i = 0; i < 100; i++) {
+            let para = document.createElement('p')
+            para.innerText = `In frag this is para ${i + 1}`
+            frag.appendChild(para)
+        }
+
+        document.body.appendChild(frag)
+
+        const p6 = performance.now()
+        console.log("Using frag with 1 reflow and 1 repaing : " , p6 - p5)
+    
+        
+        <!-- console.log(` p1 : ${p1} , p2 : ${p2} ,  p3 : ${p3} , p4 : ${p4} ,  p5 : ${p5} , p6 : ${p6} , `) -->
+
+    </script>
+</body>
+</html>

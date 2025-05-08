@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>conic-gradient</title>
+    <style>
+        :root{
+            --progress : 0%
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            gap: 20px;
+        }
+        .measure{
+            display: flex;
+        }
+        .circle{
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 2px solid black;
+            background-color: greenyellow;
+            background: conic-gradient(
+                green 0% calc(var(--progress)),
+                greenyellow calc(var(--progress)) 100%
+            )
+            /*
+            transition: background 0.5s ease;
+            animation: circle 1s ease-out 0.2 1 forwards ;*/
+        }
+/*
+@keyframes circle {
+    from{
+    background: conic-gradient(
+        greenyellow calc(var(--progress)) 100%
+        )
+    }
+    to{
+        background: conic-gradient(
+            green 0% calc(var(--progress))
+            )
+        }    
+    }
+*/ 
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="measure">
+            <input type="text" id="measure" placeholder="enter percentage to alter">
+            <button id="change">Change</button>
+            <img src="../../resources/dark_mode.png" id="dm" width="30px">
+        </div>
+        
+        <div class="circle"></div>
+    </div>
+    
+    <script>
+        const input = document.getElementById('measure')
+        const button = document.getElementById('change')
+        const dm = document.getElementById('dm')
+        button.addEventListener('click',()=>{
+            const progress = input.value.trim()
+            console.log(progress)
+            if(isNaN(progress) || progress ==="" || progress<0 || progress>100){
+                alert("Enter a number between 0 and 100")
+                return;
+            }
+
+            document.documentElement.style.setProperty('--progress',progress+'%')
+        })
+
+        input.addEventListener('keydown',(event)=>{
+            if(event.key === 'Enter')
+                button.click()
+        })
+
+        dm.addEventListener('click',()=>{
+            if(document.documentElement.style.backgroundColor === 'black')
+                document.documentElement.style.setProperty('background-color','white')
+            else
+                document.documentElement.style.setProperty('background-color','black')
+        })
+    </script>
+</body>
+</html>

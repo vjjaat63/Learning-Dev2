@@ -124,3 +124,15 @@ h3::after{
 #donelist{
     color: black;
 }
+@media screen and (orientation : portrait) {
+    .mid{
+        flex-direction: column;
+    }    
+    h3{
+        display: block;
+        text-align: center;
+    }
+    #donelist{
+        color: white ;
+    }
+}
