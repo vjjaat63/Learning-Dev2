@@ -1,0 +1,120 @@
+<html>
+    <head>
+        <title> Mobiles </title>
+        <style>
+    *{
+    padding: 0;
+    margin: 0;
+}
+.container{
+    padding: 5px;
+    border: 2px solid rgb(218, 224, 133);
+    border-radius: 20px;
+    width: 300px;
+    height: 380px;
+    margin: auto;
+}
+.image img{
+    height: 200px;
+    margin: 10px auto 20px auto;
+    transition: transform 0.3s ease-in-out;
+}
+.image img:hover{
+    transform: scale(1.12)
+}
+.mrp{
+    color: grey;
+}
+.off{
+    color: green;
+}
+.price{
+    font-size: 1.1em;
+    font-weight: 700;
+}
+span{
+    margin: 4px;
+}
+#count{
+    color: crimson;
+    font-size: 1.2em;
+    font-weight: bolder;
+}
+button{
+    width: 120px;
+    padding: 5px;
+    background-color: rgb(218, 224, 133);
+    border: 2px solid black;
+    border-radius: 4px;
+    margin-top: 4px;
+    transition: transform 0.2s ease-in;
+}
+button:hover{
+    transform: scale(1.1);
+    color: white;
+    background-color: rgb(147, 147, 65);
+}
+.button{
+    display: flex;
+    justify-content:space-evenly;
+}
+.stock{
+    text-align: right;
+}
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <div class="image">
+             <center><img src="images/product.jpg" alt=""></center>
+            </div>
+            <div class="detail"> <h1> <center>Samsung S24 Ultra</center></h1></div>
+            <span class="mrp"> <strike> 
+                RS 1,44,999
+            </strike>
+        </span>
+            <span class="off"> 8% off</span>
+            <br>
+            <span class="price"> Rs. 1,31,999</span>
+            
+            <div class="button">
+                <button class="buy"> BUY </button>
+                <button class="cart">ADD TO CART</button>
+            </div>
+            <div class="stock">
+                In Stock : <span id="count"> 11 </span>
+        </div>
+        </div>
+
+
+
+        <script>
+            
+document.addEventListener('DOMContentLoaded', function() {
+    // Get references to the stock count and buttons
+    let stockCountElement = document.getElementById('count');
+    let buyButton = document.querySelector('.buy');
+    let cartButton = document.querySelector('.cart');
+
+    // Get the initial stock count as a number
+    let stockCount = parseInt(stockCountElement.textContent);
+
+    // Function to decrease stock count
+    function reduceStock() {
+        if (stockCount > 0) {
+            stockCount--;
+            stockCountElement.textContent = stockCount;
+        } else {
+            // Show an alert when stock is 0
+            alert('Out of stock!');
+        }
+    }
+
+    // Add event listeners to the buttons
+    buyButton.addEventListener('click', reduceStock);
+    cartButton.addEventListener('click', reduceStock);
+});
+
+        </script>
+    </body>
+</html>

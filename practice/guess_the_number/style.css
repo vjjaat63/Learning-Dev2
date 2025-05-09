@@ -1,0 +1,76 @@
+*{
+    margin: 0;
+    padding: 0;
+    background-color: #212121;
+}
+body{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.container{
+    height: 50vh;
+    width: 30vw;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+}
+.top{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: transparent;
+}
+#input{
+    border-radius: 5px;
+    background-color: transparent;
+    height: 20px;
+    border: 2px solid black;
+    padding-left: 5px;
+    &::placeholder{
+        color: black;
+    }
+}
+button{
+    border: 2px solid black;
+    padding: 3px;
+    border-radius: 5px;
+    color: white;
+    background-color: rgb(24, 97, 97);
+    cursor: pointer;
+
+    &:active{
+        transform: translate(1px,1px);
+        transition: transform 0.3s ease;
+    }
+}
+.info{
+    background-color: transparent;
+    color: rgb(23, 105, 113);
+    font-size: 1.4em;
+    margin: 10px;
+}
+.details{
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    background-color: inherit;
+}
+.bottom {
+    background-color: inherit;
+}
+.scenario{
+    background-color: inherit;
+}
+p,span{
+    background-color: inherit;
+}
+ans{
+    background-color: inherit;
+}
+#input:focus {
+    border: 2px solid #3f9a9a;
+    outline: none;
+}
