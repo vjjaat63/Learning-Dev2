@@ -1,17 +1,23 @@
 // music
 const input = document.getElementById('input');
 const btn = document.getElementById('search');
-const result = document.getElementById('result');
-
+const container = document.getElementById('container');
+const dm = document.getElementById('dm');
 let handledata = (data)=>{
-    // console.log(data);
-    if (document.body.contains(document.getElementById('song'))) {
-        document.getElementById('song').remove();
-    }
     
-
-
+    const oldResult = document.getElementById('result');
+    if (oldResult) 
+        oldResult.remove();
+    
+    const result = document.createElement('div');
+    result.id = 'result'
+    container.appendChild(result);
+    
+    
+    
     data.forEach(song => {
+        let details = document.createElement('div')
+        details.className = 'song';
         // console.log(song)
         const album = song.album;
         const thumbnail = song.image;        
@@ -19,16 +25,13 @@ let handledata = (data)=>{
         const artists = song.singers;
         const duration ={
             minutes : Math.floor(parseInt(song.duration)/60) ,
-            seconds : parseInt(song.duration)%60
+            seconds : Math.floor(parseInt(song.duration)%60)
         }
         const music = song.music;
         const totalplays = song.play_count;
         const releaseDate = song.release_date;
 
-        // console.log(audio);
-        const div = document.createElement('div')
-        div.id = 'song';
-        div.innerHTML = `<img src = ${thumbnail} alt = "thumbnail" class = "image">
+        details.innerHTML = `<img src = ${thumbnail} alt = "thumbnail" class = "image">
         <p class = 'audio'> <audio src = ${audio} controls >click</audio> </p>
         <p class = 'duration'> Duration : ${duration.minutes}:${duration.seconds} </p>
         <p class = 'album'> Album : ${album}</p>
@@ -37,7 +40,7 @@ let handledata = (data)=>{
         <p class = 'totalplays'> Total Plays : ${totalplays} </p>
         <p class = 'totalplays'> Release Date : ${releaseDate} </p> `
         
-        result.insertAdjacentElement('beforeend',div);
+        result.insertAdjacentElement('beforeend',details);
     });
 }
 
@@ -53,8 +56,6 @@ async function fetching(api) {
     }
     handledata(result);
 }
-
-// document.addEventListener('DOMContentLoaded', () => {
 btn.addEventListener('click',()=>{
     const song = input.value.trim();
     // const song = 'ishq'
@@ -73,3 +74,24 @@ document.addEventListener('play', function(e){
         }
     });
 }, true);
+
+dm.addEventListener('click',()=>{
+    if(document.documentElement.style.getPropertyValue('--bg') === 'white'){
+        document.documentElement.style.setProperty('--bg','black');
+        document.documentElement.style.setProperty('--col','white');
+        document.documentElement.style.setProperty('--top','rgb(255, 105, 180)');
+        document.documentElement.style.setProperty('--shadow','0 4px 8px white');
+    }   
+    else{
+        document.documentElement.style.setProperty('--bg','white');
+        document.documentElement.style.setProperty('--col','black');
+        document.documentElement.style.setProperty('--top','pink');
+        document.documentElement.style.setProperty('--shadow','0 8px 16px black');
+    }   
+})
+
+input.addEventListener('input',()=>{
+    const song = input.value.trim();
+    // const song = 'ishq'
+    fetching(`https://saavnapi-nine.vercel.app/result/?query=${song}&lyrics=true`);
+})
