@@ -1,0 +1,8 @@
+get : /users  -> return all users  /
+get : /users/1 -> return user with id 1 / 
+
+post : /users -> create new user  
+
+patch : /users -> update
+
+delete : /user/1 -> delete user with id 1
