@@ -1,10 +1,17 @@
 const users = require("./MOCK_DATA.json");
 const fs = require("fs");
 const express = require("express");
-const { json, arrayBuffer } = require("stream/consumers");
 const app = express();
 const PORT = 8000;
-app.use(express.urlencoded({ extended: false }));
+
+app.use(express.urlencoded({ extended: false })); // middleware
+
+app.use((req, res, next)=>{
+    fs.appendFile("log.txt", `${(new Date()).toLocaleString()} | ${req.method} | ${req.path}\n`, (err) => {
+        if(err) console.log("Failed to log the request!");
+    });
+    next();
+})
 
 function searchIndex(users, x) {
     for (let i = 0; i < users.length; i++)
@@ -21,13 +28,18 @@ app.get("/", (req, res) => {
 
 // All Users
 app.get("/api/users", (req, res) => {
+    res.setHeader("X-Creater","Vishal Singh Jhajhria")
     return res.json(users);
 })
 
 // Adding New User
 app.post("/api/users", (req, res) => {
     //  CREATE NEW USER
-    users.push({ id: users.length + 1, ...req.body });
+    const body = req.body;
+if(!body || !body.first_name || !body.last_name || !body.email || !body.gender || !body.skill || !body.education)
+    return res.status(400).send("All fields are required .");
+    
+users.push({ id: users.length + 1, ...body });
 
     fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (error) => {
         if (error) {
@@ -35,7 +47,7 @@ app.post("/api/users", (req, res) => {
             return res.send(response);
         }
         response = `User saved successfully! with id ${users.length}`;
-        return res.send(response);
+        return res.status(201).send(response);
     });
 })
 
@@ -45,18 +57,19 @@ app.route("/api/users/:x")
 
         const index = searchIndex(users, x);
         if (index === -1)
-            return res.send(`There is no any user with id ${x}`);
+            return res.status(404).send(`User not found`);
         else
             return res.send(users[index]);
     })
     .patch((req, res) => {
         const x = Number(req.params.x);
-        const user = { "id": x, ...req.body };
+        const body = req.body;
+
         let index = searchIndex(users, x);
         if (index === -1)
-            return res.send(`User not found ! Invalid Id ${x}`);
+            return res.status(404).send(`User not found`);
 
-        users[index] = user;
+        const user = {...body , ...users[index]};
         fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (error) => {
             if (error)
                 return res.send(`Unable to udate the user's data: ${error}`);
@@ -69,8 +82,8 @@ app.route("/api/users/:x")
 
         let index = searchIndex(users, x);
         if (x === -1)
-            return res.send("User not found !");
-
+            return res.status(404).send(`User not found`);
+        
         users.splice(index, 1);
         fs.writeFile("./MOCK_DATA.json", JSON.stringify(users), (error) => {
             if (error)
