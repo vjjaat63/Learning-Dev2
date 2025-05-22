@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        *{
+            background-color: #212121;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        h2{
+            text-align: center;
+            border-bottom: 2px solid white;
+            margin: 20px;
+            padding: 8px;
+        }
+        table,tr,td,th{
+            border: 2px solid black;
+            border-collapse: collapse;
+            text-align: center;
+            margin: 7px;
+            padding: 7px;
+        }
+        form{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        button,input{
+            border-bottom: 1px solid white;
+            margin: 5px;
+            padding: 5px;
+        }
+        div{
+            margin: 15px;
+            padding: 14px;
+            display: flex;
+            justify-content: center;
+        }
+    </style>
+</head>
+
+  <body>
+    <h2>URL Shortener</h2>
+
+    <% if (locals.id) { %> Short URL is https://localhost:8001/url/<%= locals.id
+    %> <% } %>
+
+    <form method="POST" action="/url">
+      <input type="text" name="url" placeholder="https://www.example.com" />
+      <button type="submit">Generate</button>
+    </form>
+
+    <% if (locals.urls) { %>
+
+    <div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>S No.</th>
+                    <th>ShortID</th>
+                    <th>Directed URL</th>
+                    <th>Total Clicks</th>
+                </tr>
+            </thead>
+            <% urls.forEach((url,index)=> { %>
+                <tr>
+                    <td><%= index+1 %></td>
+                    <td><%= url.shortId %></td>
+                    <td><%= url.redirectURL %></td>
+                    <td><%= url.visitHistory.length %></td>
+                </tr>
+                <% }) %>
+                <tbody></tbody>
+            </table>
+        </div>
+            <% } %>
+            <script>
+                document.querySelector("form").addEventListener("submit", () => {
+                    alert("Submitting...");
+                });
+    </script>
+  </body>
+</html>

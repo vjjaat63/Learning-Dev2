@@ -3,6 +3,7 @@ const url = require('../models/url');
 
 async function handleGenerateShortUrl(req, res) {
     const body = req.body;
+    console.log("📦 Received URL in body:", body.url); // Debug log
     if (!body.url)
         return res.status(400).json({ error: "A url is required as input!" });
 
@@ -12,8 +13,11 @@ async function handleGenerateShortUrl(req, res) {
         redirectURL: body.url,
         visitedHistory: []
     })
-
-    return res.json({ id: shortID });
+    
+    return res.render("home",{
+        id : shortID
+    });
+    // return res.json({ id: shortID });
 }
 
 async function handleTotalVisits(req, res) {
