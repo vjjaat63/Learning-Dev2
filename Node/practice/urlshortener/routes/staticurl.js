@@ -9,11 +9,11 @@ router.get("/",async (req,res)=>{
     });
 })
 
-router.get("/user/signup",async (req,res)=>{
+router.get("/signup",async (req,res)=>{
     res.render("signup");
 })
 
-router.get("/user/login",async (req,res)=>{
+router.get("/login",async (req,res)=>{
     res.render("login");
 })
 
