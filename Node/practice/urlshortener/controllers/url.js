@@ -4,6 +4,7 @@ const url = require('../models/url');
 async function handleGenerateShortUrl(req, res) {
     const body = req.body;
     console.log("📦 Received URL in body:", body.url); // Debug log
+    
     if (!body.url)
         return res.status(400).json({ error: "A url is required as input!" });
 
@@ -11,13 +12,13 @@ async function handleGenerateShortUrl(req, res) {
     await url.create({
         shortId: shortID,
         redirectURL: body.url,
-        visitedHistory: []
+        visitedHistory: [],
+        createdBy : req.user._id
     })
     
     return res.render("home",{
         id : shortID
     });
-    // return res.json({ id: shortID });
 }
 
 async function handleTotalVisits(req, res) {
@@ -43,8 +44,8 @@ async function handleRedirect(req, res) {
             }
         }
     );
-
-    res.redirect(entry.redirectURL);
+    console.log(entry)
+    return res.redirect(entry.redirectURL);
 }
 
 module.exports = {

@@ -46,7 +46,7 @@
   <body>
     <h2>URL Shortener</h2>
 
-    <% if (locals.id) { %> Short URL is https://localhost:8001/url/<%= locals.id
+    <% if (locals.id) { %> Short URL is http://localhost:8001/url/<%= locals.id
     %> <% } %>
 
     <form method="POST" action="/url">
@@ -79,10 +79,5 @@
             </table>
         </div>
             <% } %>
-            <script>
-                document.querySelector("form").addEventListener("submit", () => {
-                    alert("Submitting...");
-                });
-    </script>
   </body>
 </html>
