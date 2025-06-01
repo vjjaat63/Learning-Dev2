@@ -11,6 +11,14 @@ router.get("/", restrictTo(["NORMAL"]) ,async (req,res)=>{
     });
 })
 
+router.get("/admin/urls", restrictTo(["ADMIN"]), async (req, res) => {
+    const allurls = await urls.find({});
+
+    res.render("home", {
+        urls: allurls,
+    });
+})
+
 router.get("/signup",async (req,res)=>{
     res.render("signup");
 })

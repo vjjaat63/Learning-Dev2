@@ -17,7 +17,7 @@ function restrictTo(roles = []){
             return res.redirect('/login')
 
         console.log(req.user);
-        if(!req.user.role)
+        if(!roles.includes(req.user.role))
             return res.end("UnAuthorized")
 
         return next();
